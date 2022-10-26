@@ -1,2 +1,2 @@
-# java-script-projetos
+# Algortimos com JavaScript
 Desafios JavaScript
