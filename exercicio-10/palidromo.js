@@ -1,3 +1,8 @@
+/**
+ * escreva um programa que receba uma palavra e verifique se ela é
+ * palidromo
+ */
+
 import scanner from 'readline-sync';
 
 let palavra = scanner.question("Digite uma palavra: ");

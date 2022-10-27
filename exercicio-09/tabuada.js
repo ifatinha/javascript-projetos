@@ -1,3 +1,8 @@
+/**
+ * faça uma aplicação que recebe um numero qualquer e mostre
+ * sua tabuada do 0 ao 20
+ */
+
 import input from 'readline-sync';
 
 console.log("Olá, eu sou o robô de tabuada!");

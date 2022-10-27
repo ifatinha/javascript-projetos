@@ -1,3 +1,5 @@
+//Calculadora com 4 operações basicas
+
 let numero1 = parseFloat(window.prompt("Digite um número: "));
 let numero2 = parseFloat(window.prompt("Digite outro número: "));
 

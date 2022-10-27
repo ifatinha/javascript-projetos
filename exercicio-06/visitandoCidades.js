@@ -1,3 +1,10 @@
+/**
+ * Recebe o nome de um turista e pergunte se ele ja visitou alguma cidade
+ * e armazene essas informações em uma variavel, no final da aplicação
+ * mostre quantas cidades esse turista visitou bem como o nome de cada 
+ * cidade
+ */
+
 import input from 'readline-sync';
 
 let turista = input.question("E ai turista, qual o seu nome? ");

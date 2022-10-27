@@ -1,3 +1,9 @@
+/**
+ * receba o nome de um cliente e o saldo inicial de sua conta e em seguida
+ * apresente um menu perguntando se o cliente gostaria de sacar ou depositar
+ * um novo valor ao saldo inicial;
+ */
+
 import input from 'readline-sync';
 
 let cliente = input.question("Nome completo: ");

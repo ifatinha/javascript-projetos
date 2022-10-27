@@ -1,3 +1,6 @@
+/**Receba um valor em metros e escolha para unidade de medida 
+ * deseja converter esse valor
+ */
 import entradaDados from 'readline-sync';
 
 let valorEmMetros = entradaDados.question("Metros: ");

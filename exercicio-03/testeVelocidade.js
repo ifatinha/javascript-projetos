@@ -1,3 +1,4 @@
+//Receber os dados de 2 veiculos e verificar qual dos dois é mais rapido
 import entradaDados from 'readline-sync';
 
 let veiculo1 = entradaDados.question("Nome do Carro 01: ");

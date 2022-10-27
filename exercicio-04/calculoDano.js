@@ -1,3 +1,5 @@
+//Rceber as informações de dois jogadores e calcular o dano sofrido pelo personagem de defesa
+
 import entradaDados from 'readline-sync';
 
 let personagem1 = entradaDados.question("Personagem de ataque: ");

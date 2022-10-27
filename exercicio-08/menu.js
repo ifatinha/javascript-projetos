@@ -1,3 +1,8 @@
+/**
+ * faça uma aplicação simples que mostre um menu de informações 
+ * e em seguida peça para o usuario escolher uma das opções e mostre
+ * uma mensagem informando qual opção o usuário escolheu
+ */
 import input from 'readline-sync';
 
 let opcao = "";

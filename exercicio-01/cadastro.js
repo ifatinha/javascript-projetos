@@ -3,6 +3,7 @@
    "type": "module",
 */
 // import entradaDados from 'readline-sync';
+//Cadastro Simples
 
 let nome = window.prompt("Primeiro Nome: ");
 let sobrenome = window.prompt("Sobrenome: ");
