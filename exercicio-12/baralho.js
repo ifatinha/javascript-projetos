@@ -18,13 +18,13 @@ let baralho = [];
 do {
 
     if (baralho.length == 0) {
-        console.log("O baralho tem " + baralho.length + " cartas.");
+        console.log("Cartas no baralho " + baralho.length);
         console.log("1 - Adicionar carta");
         console.log("3 - Sair");
     } else {
-        console.log("O baralho tem " + baralho.length + " cartas.");
+        console.log("Cartas no baralho " + baralho.length);
         for (let i = 0; i < baralho.length; i++) {
-            console.log(i + "º " + baralho[i]);
+            console.log((i + 1) + "º " + baralho[i]);
         }
         console.log("1 - Adicionar carta");
         console.log("2 - Puxar uma carta");
@@ -35,14 +35,14 @@ do {
 
     switch (opcao) {
         case "1":
-            let carta = scanner.question("Qual carta você quer adicionar ao baralho? ");
+            let carta = scanner.question("Qual carta voce quer adicionar ao baralho? ");
             baralho.unshift(carta);
             console.log("Carta " + carta + " adicionada ao baralho!!");
             break;
         case "2":
             console.log("Puxando carta " + baralho[baralho.length - 1] + " do baralho!!");
             let cartaPuxada = baralho.shift();
-            console.log("Carta " + cartaPuxada + " puxada com sucesso!!");
+            console.log("Você puxou um(a) " + cartaPuxada);
             break;
         case "3":
             console.log("Encerrando aplicação!!!");
