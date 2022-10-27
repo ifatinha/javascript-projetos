@@ -20,7 +20,7 @@ do {
     } else {
         console.log("Pacientes aguardando atendimento");
         for (let i = 0; i < pacientes.length; i++) {
-            console.log(i + "º " + pacientes[i]);
+            console.log((i + 1) + "º " + pacientes[i]);
         }
     }
 
@@ -38,9 +38,13 @@ do {
             console.log("O paciente " + novoPaciente + " foi adicionado a fila de espera!!!");
             break;
         case "2":
-            console.log("Atendendo paciente " + pacientes[0] + "!!!");
-            let pacienteAtendido = pacientes.shift();
-            console.log("O paciente " + pacienteAtendido + " foi atendido com sucesso!!!");
+            if (pacientes.length > 0) {
+                console.log("Atendendo paciente " + pacientes[0] + "!!!");
+                let pacienteAtendido = pacientes.shift();
+                console.log("O paciente " + pacienteAtendido + " foi atendido com sucesso!!!");
+            } else {
+                console.log("Nenhum paciente para atendimento.");
+            }
             break;
         case "3":
             console.log("Encerrando aplicação!!!");
@@ -50,4 +54,4 @@ do {
             break;
     }
 
-} while (opcao != "3");
+} while (opcao !== "3");
