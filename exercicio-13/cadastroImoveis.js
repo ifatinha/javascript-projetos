@@ -17,9 +17,11 @@ Escreva um programa em javascript que funcione como um cadastro de imóveis e at
 import scanner from 'readline-sync';
 
 let opcao = "";
-let imoveis = [];
+const imoveis = [];
 
 do {
+
+    console.log("Total de imóveis " + imoveis.length);
     console.log("1 - Cadastrar novo imóvel");
     console.log("2 - Consultar imóveis cadastrados");
     console.log("3 - Sair");
@@ -27,7 +29,7 @@ do {
 
     switch (opcao) {
         case "1":
-            let imovel = {};
+            const imovel = {};
             imovel.proprietario = scanner.question("Nome do proprietario: ");;
             imovel.numeroQuartos = parseInt(scanner.question("Numero de quartos: "));;
             imovel.numeroBanheiros = parseInt(scanner.question("Numero de Banheiros: "));;
