@@ -6,6 +6,7 @@ executar();
  * Funções do programa
  * 
  * */
+
 function exibirMenu() {
     console.log("Calculadora Geométrica");
     console.log("Escolha uma das opções abaixo");
