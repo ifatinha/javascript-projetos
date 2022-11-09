@@ -1,6 +1,5 @@
 import scanner from 'readline-sync'
-
-// executar();
+const vagas = [];
 
 function exibirMenu() {
     console.log("1 - Vagas disponiveis");
@@ -15,31 +14,29 @@ function exibirMenu() {
 
 function executar() {
     let opcao = "";
-    const vagas = [];
-
     do {
         opcao = exibirMenu();
         console.clear();
 
         switch (opcao) {
             case "1":
-                listarVagas(vagas);
+                listarVagas();
                 break;
 
             case "2":
-                vagas.push(criarVaga());
+                criarVaga();
                 break;
 
             case "3":
-                mostrarVaga(vagas);
+                mostrarVaga();
                 break;
 
             case "4":
-                inscreverCandidato(vagas);
+                inscreverCandidato();
                 break;
 
             case "5":
-                console.log("Excluir vaga");
+                removerVaga();
                 break;
 
             case "6":
@@ -48,20 +45,19 @@ function executar() {
 
             default:
                 console.log("Opção inválida!");
-                break;
         }
     } while (opcao !== "6")
 }
 
-function listarVagas(vagas) {
+function listarVagas() {
     if (vagas.length > 0) {
         console.log("Vagas Disponiveis");
-        vagas.forEach(function (vaga, index) {
-            console.log("Codigo".padEnd(30, ".") + ": " + vaga.codigo);
-            console.log("Vaga".padEnd(30, ".") + ": " + vaga.nome);
-            console.log("Aberto até".padEnd(30, ".") + ": " + vaga.dataLimite);
-            console.log("Número de inscritos".padEnd(30, ".") + ": " + vaga.candidatos.length);
-        })
+        const txt = vagas.reduce(function (txtAux, vaga) {
+            txtAux += vaga.codigo + ". " + vaga.nome +
+                " ( " + vaga.candidatos.length + " candidatos )\n";
+            return txtAux;
+        }, "");
+        console.log(txt);
     } else {
         console.log("Nenhuma vaga disponivel!");
     }
@@ -69,36 +65,47 @@ function listarVagas(vagas) {
 
 function criarVaga() {
     const vaga = {};
+
     vaga.codigo = scanner.question("Codigo: ");
     vaga.nome = scanner.question("Nome: ");
     vaga.descricao = scanner.question("Descricao: ");
-    vaga.dataLimite = scanner.question("Ate quando a vaga vai ficar disponivel? ");
+    vaga.dataLimite = scanner.question("Ate quando a vaga vai ficar disponivel? (dd/mm/yyyy): ");
     vaga.candidatos = [];
 
-    return vaga;
+    console.clear();
+    exibirDetalhesVaga(vaga);
+
+    let resposta = scanner.question("Deseja criar uma vaga com essas informações? S/N ");
+
+    if (resposta === "S") {
+        vagas.push(vaga);
+        console.log("Vaga criada!!");
+    } else {
+        console.log("Operação cancelada!!!");
+    }
 }
 
-function mostrarVaga(vagas) {
+function mostrarVaga() {
     let codigo = scanner.question("Codigo da vaga: ");
-    let vaga = buscarVaga(codigo, vagas);
+    let posicao = buscarVaga(codigo, vagas);
 
-    if (vaga.codigo) {
+    if (posicao) {
+        let vaga = vagas[posicao];
         exibirDetalhesVaga(vaga);
     } else {
         console.log("Nenhuma vaga encontrada!");
     }
 }
 
-function buscarVaga(codigo, vagas) {
-    let aux = {};
-    //retornar o indice ao inves do objeto
-    for (let vaga of vagas) {
-        if (vaga.codigo === codigo) {
-            aux = vaga;
+function buscarVaga(codigo) {
+    let posicao;
+    for (let index in vagas) {
+        if (vagas[index].codigo === codigo) {
+            posicao = index;
         }
     }
 
-    return aux;
+    return posicao;
 }
 
 function exibirDetalhesVaga(vaga) {
@@ -117,14 +124,44 @@ function exibirDetalhesVaga(vaga) {
     }
 }
 
-function inscreverCandidato(vagas) {
+function inscreverCandidato() {
     let candidato = scanner.question("Nome do Candidato: ");
     let codigoVaga = scanner.question("Codigo da vaga: ");
 
-    let vaga = buscarVaga(codigoVaga, vagas);
+    let posicao = buscarVaga(codigoVaga, vagas);
 
-    if (vaga.candidato) {
+    if (posicao) {
+        console.clear();
+        let resposta = scanner.question("Deseja inscrever o candidato " + candidato + " na vaga " +
+            vagas[posicao].nome + "? S/N ");
 
+        if (resposta === "S") {
+            vagas[posicao].candidatos.push(candidato);
+            console.log("Dados salvos!");
+        } else {
+            console.log("Operação cancelada!");
+        }
+        
+    } else {
+        console.log("Nenhuma vaga encontrada!");
+    }
+}
+
+function removerVaga() {
+    let codigoVaga = scanner.question("Codigo da vaga: ");
+    let posicao = buscarVaga(codigoVaga, vagas);
+
+    if (posicao) {
+        exibirDetalhesVaga(vagas[posicao]);
+        let resposta = scanner.question("Excluir vaga? S/N ");
+        if (resposta === "S") {
+            vagas.splice(posicao, 1);
+            console.log("Vaga excluida!");
+        } else {
+            console.log("Operação cancelada!");
+        }
+    } else {
+        console.log("Nenhuma vaga encontrada!");
     }
 }
 
