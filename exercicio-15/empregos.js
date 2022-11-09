@@ -75,7 +75,7 @@ function criarVaga() {
     console.clear();
     exibirDetalhesVaga(vaga);
 
-    let resposta = scanner.question("Deseja criar uma vaga com essas informações? S/N ");
+    let resposta = scanner.question("Deseja criar uma vaga com essas informacoes? S/N ");
 
     if (resposta === "S") {
         vagas.push(vaga);
@@ -87,11 +87,10 @@ function criarVaga() {
 
 function mostrarVaga() {
     let codigo = scanner.question("Codigo da vaga: ");
-    let posicao = buscarVaga(codigo, vagas);
+    let posicao = buscarVaga(codigo);
 
     if (posicao) {
-        let vaga = vagas[posicao];
-        exibirDetalhesVaga(vaga);
+        exibirDetalhesVaga(vagas[posicao]);
     } else {
         console.log("Nenhuma vaga encontrada!");
     }
@@ -141,7 +140,7 @@ function inscreverCandidato() {
         } else {
             console.log("Operação cancelada!");
         }
-        
+
     } else {
         console.log("Nenhuma vaga encontrada!");
     }
