@@ -43,15 +43,14 @@ const retornaSigno = (signos, data) => {
 }
 
 function executar() {
-    let data = prompt("Digite uma data no formato aaaa-mm-dd: ");
-    let novaData = new Date(data);
+    let data = new Date();
 
-    let signo = retornaSigno(signos, novaData);
+    let signo = retornaSigno(signos, data);
 
     if (signo) {
-        console.log("O signo de hoje é " + signo);
+        alert("O signo de hoje é " + signo);
     } else {
-        console.log("Signo inválido!");
+        alert("Signo inválido!");
     }
 
 }
